@@ -1,21 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda AJAX</title>
+    <link rel="stylesheet" href="client/styles/login.css">
 </head>
-<body>
-    <div id="login">
-        <form>
 
+<body>
+    <!--Iniciar Sesión-->
+    <div id="login" class="login-form">
+        <h1>Iniciar sesión</h1>
+        <form>
+            <input type="text" placeholder="Nombre de usuario" required>
+            <input type="password" placeholder="Contraseña" required>
+            <input type="submit" value="Acceder">
         </form>
+        <p>¿Eres nuevo cliente?</p>
+        <a href="#" onclick="mostrarCrearCuenta()">Crear cuenta</a>
     </div>
+
+    <!--Crear Cuenta-->
+    <div id="crear-cuenta" class="login-form" style="display: none;">
+        <h1>Crear cuenta</h1>
+        <form>
+            <input type="text"  placeholder="Nombre de usuario" required>
+            <input type="email" placeholder="Correo electronico" required>
+            <input type="password" placeholder="Contraseña" required>
+            <input type="submit" value="Crear cuenta">
+        </form>
+        <p>Ya tengo una cuenta</p>
+        <a href="#" onclick="mostrarLogin()">Iniciar sesión</a>
+    </div>
+
+    <!--Sección principal-->
     <div id="principal" style="display: none;">
         <header></header>
         <main></main>
         <aside></aside> <!-- Carrito de la compra -->
         <footer></footer>
     </div>
+
+    <script src="client/js/sesion.js"></script>
+
 </body>
+
 </html>
