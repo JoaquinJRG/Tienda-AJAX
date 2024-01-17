@@ -76,3 +76,7 @@ a{
     font-size: 16px;
     color: RGB(0, 123, 157);
 }
+
+.mensaje {
+    font-size: 16px;
+}
