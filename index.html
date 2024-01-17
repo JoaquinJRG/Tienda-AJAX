@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda AJAX</title>
     <link rel="stylesheet" href="client/styles/login.css">
+    <link rel="stylesheet" href="client/styles/principal.css">
+    <link rel="stylesheet" href="client/styles/header.css">
 </head>
 
 <body>
@@ -38,15 +40,29 @@
 
     <!--Sección principal-->
     <div id="principal" style="display: none;">
-        <header></header>
+        <header>
+            <a id="enlace-inicio">Inicio</a>
+            <div class="datos">
+            </div>
+            <div class="enlaces">
+                <button id="carrito" onclick="abrirCarrito()">
+                    <img src="client/img/carrito.svg">
+                </button>
+                <a id="cerrar-sesion-btn">Cerrar sesión</a>
+            </div>
+        </header>
         <main>
-            Hola
+            <article>
+                hola
+            </article>
+            <aside id="mySidenav">
+                <button onclick="cerrarCarrito()">&times;</button>
+            </aside>
         </main>
-        <aside></aside> <!-- Carrito de la compra -->
-        <footer></footer>
     </div>
 
     <script src="client/js/sesion.js"></script>
+    <script src="client/js/carrito.js"></script>
 
 </body>
 
