@@ -33,7 +33,6 @@ function crearCuenta(event) {
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
 
-
             if(this.responseText == "errorCampos") {
                 mensaje.innerHTML = "Error: Rellena los campos vacios";
             } else if(this.responseText == "error") {
@@ -56,7 +55,12 @@ function crearCuenta(event) {
 
 //Inicia sesión o muestra mensaje en caso de error
 //Al iniciar sesión oculta el login y mustra la sección principal
-function iniciarSesion(e) {
+function iniciarSesion(event) {
+    //Evita que se recargue la página 
+    event.preventDefault(); 
+
+
+    
 
 }
 

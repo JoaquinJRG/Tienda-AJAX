@@ -4,7 +4,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nombreUsuario = $_POST["nombreUsuario"];
     $correoUsuario = $_POST["correoUsuario"];
-    $claveUsuario = $_POST["claveUsuario"]; 
+    $claveUsuario = crypt($_POST["claveUsuario"], "aa"); 
 
     //Todos los campos son obligatorios
     if($nombreUsuario == "" || $correoUsuario == "" || $claveUsuario == "") {
