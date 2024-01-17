@@ -21,7 +21,7 @@ function mostrarLogin() {
 //Añade datos a BD y muestra mensaje
 function crearCuenta(event) {
     //Evita que se recargue la página 
-    event.preventDefault(); 
+    event.preventDefault();
 
     let nombreUsuario = document.getElementById("crearUsuario");
     let correoUsuario = document.getElementById("crearCorreo");
@@ -30,20 +30,20 @@ function crearCuenta(event) {
 
     let xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
 
-            if(this.responseText == "errorCampos") {
+            if (this.responseText == "errorCampos") {
                 mensaje.innerHTML = "Error: Rellena los campos vacios";
-            } else if(this.responseText == "error") {
+            } else if (this.responseText == "error") {
                 mensaje.innerHTML = "Error al crear la cuenta";
-            }else{
+            } else {
                 mensaje.innerHTML = "Cuenta creada correctamente";
                 nombreUsuario.value = "";
                 correoUsuario.value = "";
                 claveUsuario.value = "";
             }
-            
+
         }
     };
 
@@ -57,10 +57,37 @@ function crearCuenta(event) {
 //Al iniciar sesión oculta el login y mustra la sección principal
 function iniciarSesion(event) {
     //Evita que se recargue la página 
-    event.preventDefault(); 
+    event.preventDefault();
 
+    let nombreUsuario = document.getElementById("loginUsuario");
+    let claveUsuario = document.getElementById("loginClave");
+    let mensaje = document.querySelector("#login .mensaje");
 
-    
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            if (this.responseText == "error") {
+                mensaje.innerHTML = "Revise usuario y contraseña";
+            }
+
+            if (this.responseText == "true") {
+                loginDiv.style.display = "none"; 
+                principalDiv.style.display = "flex";
+
+                //Función que crea la página principal
+
+            } 
+
+        }
+    };
+
+    xhttp.open("POST", "server/iniciar_sesion.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(`nombreUsuario=${nombreUsuario.value}&claveUsuario=${claveUsuario.value}`);
+    return false;
+
 
 }
 
