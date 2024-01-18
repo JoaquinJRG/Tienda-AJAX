@@ -54,7 +54,7 @@ function crearCuenta(event) {
 }
 
 //Inicia sesión o muestra mensaje en caso de error
-//Al iniciar sesión oculta el login y mustra la sección principal
+//Al iniciar sesión oculta el login y muestra la sección principal
 function iniciarSesion(event) {
     //Evita que se recargue la página 
     event.preventDefault();
@@ -76,7 +76,7 @@ function iniciarSesion(event) {
                 loginDiv.style.display = "none"; 
                 principalDiv.style.display = "flex";
 
-                //Función que crea la página principal
+                cargarCategorias();
 
             } 
 
@@ -86,9 +86,26 @@ function iniciarSesion(event) {
     xhttp.open("POST", "server/iniciar_sesion.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(`nombreUsuario=${nombreUsuario.value}&claveUsuario=${claveUsuario.value}`);
+
     return false;
+}
 
+//Cierra sesión. Oculta la sección principal y muestra el login
+function cerrarSesion() {
+    let xhttp = new XMLHttpRequest(); 
 
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            loginDiv.style.display = "flex"; 
+            principalDiv.style.display = "none";    
+            alert("Sesion cerrada con éxito");	
+        }
+    };  
+
+    xhttp.open("GET", "server/cerrar_sesion.php", true);
+    xhttp.send(); 
+
+    return false; 
 }
 
 

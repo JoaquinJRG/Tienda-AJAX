@@ -7,7 +7,6 @@
     <title>Tienda AJAX</title>
     <link rel="stylesheet" href="client/styles/login.css">
     <link rel="stylesheet" href="client/styles/principal.css">
-    <link rel="stylesheet" href="client/styles/header.css">
 </head>
 
 <body>
@@ -41,14 +40,14 @@
     <!--Sección principal-->
     <div id="principal" style="display: none;">
         <header>
-            <a id="enlace-inicio">Inicio</a>
+            <button id="enlace-inicio" onclick="cargarCategorias()">Inicio</button>
             <div class="datos">
             </div>
             <div class="enlaces">
                 <button id="carrito" onclick="abrirCarrito()">
                     <img src="client/img/carrito.svg">
                 </button>
-                <a id="cerrar-sesion-btn">Cerrar sesión</a>
+                <button onclick="cerrarSesion()" id="cerrar-sesion-btn">Cerrar sesión</button>
             </div>
         </header>
         <main>
@@ -62,6 +61,7 @@
         </main>
     </div>
 
+    <script src="client/js/cargarDatos.js"></script>
     <script src="client/js/sesion.js"></script>
     <script src="client/js/carrito.js"></script>
 
