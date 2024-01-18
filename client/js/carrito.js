@@ -1,7 +1,7 @@
 const aside = document.querySelector("aside");
 
 function abrirCarrito() {
-    aside.style.width = "400px";
+    aside.style.width = "450px";
 }
 
 function cerrarCarrito() {

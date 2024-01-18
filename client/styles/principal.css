@@ -1,3 +1,86 @@
+/*Estilos del header*/
+header{
+    background-color: rgb(32, 32, 38);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    padding: 5px 10%;
+}
+
+/*Div con los datos*/
+.datos{
+    display: flex;
+    flex-direction: column;
+}
+
+.datos span{
+    color: #eceff1;
+}
+
+
+
+/*Div con los enlaces*/
+.enlaces{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/*Botón carrito*/
+#carrito{
+    background-color: RGB(32, 32, 38);
+    padding: 9px 25px;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#carrito:hover{
+    background-color: rgb(57, 57, 60);
+}
+
+/*Botón cerrar sesión*/
+#cerrar-sesion-btn{
+    font-weight: 700;
+    color: #eceff1;
+    padding: 9px 25px;
+    background-color: RGB(0, 123, 157);
+    border: 3px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+#cerrar-sesion-btn:hover{
+    color: RGB(0, 123, 157);
+    border: 3px solid RGB(0, 123, 157);
+    background-color: #eceff1;
+}
+
+/*Enlace Inicio*/
+#enlace-inicio{
+    font-weight: 700;
+    color: #eceff1;
+    padding: 9px 25px;
+    background-color: RGB(0, 123, 157);
+    border: 3px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+#enlace-inicio:hover{
+    color: RGB(0, 123, 157);
+    border: 3px solid RGB(0, 123, 157);
+    background-color: #eceff1;
+}
+
 #principal {
     display: flex;
     flex-direction: column;
@@ -16,7 +99,7 @@ aside {
     z-index: 1;
     top: 0; 
     right: 0;
-    background-color: #111; 
+    background-color: #fffffe; 
     overflow-x: hidden;
     transition: 0.5s; 
 }
