@@ -155,6 +155,7 @@ article #productos {
     width: 80%;
     border: solid 1px RGB(222, 219, 219);
     border-radius: 10px;
+    background-color: white;
 }
 
 .producto img{
