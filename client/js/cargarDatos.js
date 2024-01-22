@@ -57,7 +57,7 @@ function cargarProductos(idCategoria, nombreCategoria) {
             productos.forEach(prod => {
                 let div = document.createElement("div");
                 let divDatos = document.createElement("div");
-                let form = document.createElement("form");
+                let form = document.createElement("div");
                 let addBtn = document.createElement("button");
                 let input = document.createElement("input");
                 let imagen = document.createElement("img"); 
@@ -72,10 +72,14 @@ function cargarProductos(idCategoria, nombreCategoria) {
                     <h4>${prod.precio} €</h4>
                     <p>Stock: ${prod.stock}</p>
                 `;
-
+ 
                 addBtn.innerHTML = "Añadir al carrito";
+                addBtn.onclick = function() {
+                    anadirProductos(prod.idProducto, Number( input.value) )
+                };
+
                 input.type = "number";
-                input.id = prod.id; 
+                input.id = prod.idProducto; 
                 input.min = "1"; 
                 input.value = "1";
                 input.classList.add("cantidad");
@@ -89,10 +93,6 @@ function cargarProductos(idCategoria, nombreCategoria) {
                 seccion.appendChild(div);
 
                 
-                form.onsubmit = function() {
-                    addCarrito(prod.idProducto, Number( input.value) )
-                }
-                
             });
         }
     };
@@ -102,15 +102,5 @@ function cargarProductos(idCategoria, nombreCategoria) {
     xhttp.send(`idCategoria=${idCategoria}`);
 
     return false;
-
-}
-
-
-function anadirProductos(idProducto, unidades) {
-    
-    
-}
-
-function eliminarProductos(idProducto, unidades) {
 
 }
