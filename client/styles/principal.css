@@ -154,8 +154,38 @@ article #productos {
 
 .producto .btns{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: start;
     justify-content: center;
+    gap: 10px;
 }
+
+.btns button {
+    background-color: RGB(0, 123, 157);
+    color: #eceff1;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 3px RGB(0, 123, 157);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+
+.btns button:hover {
+    color:RGB(0, 123, 157);
+    background-color: #eceff1;
+}
+
+
+.btns input {
+    width: 65px;
+    height: auto;
+    background-color: #eceff1;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 3px RGB(0, 123, 157);
+    transition: all 0.3s ease 0s;
+}
+
 

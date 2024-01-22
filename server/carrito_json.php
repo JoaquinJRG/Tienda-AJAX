@@ -8,6 +8,11 @@ if (!comprobarSesion()) return;
 
 $idProductos = implode(",", array_keys( $_SESSION["carrito"] ) );
 
+if ($idProductos == null) {
+    echo "error";
+    return; 
+}; 
+
 $bd = conectarBD(); 
 $sql = "SELECT idProducto, nombre, precio, imagen FROM producto 
         WHERE idProducto IN($idProductos)";

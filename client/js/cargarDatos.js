@@ -91,8 +91,8 @@ function cargarProductos(idCategoria, nombreCategoria) {
                 input.max = prod.stock; 
                 input.classList.add("cantidad");
 
-                form.appendChild(addBtn);
                 form.appendChild(input);
+                form.appendChild(addBtn);
                 div.appendChild(imagen);
                 div.appendChild(divDatos)
                 div.appendChild(form);
