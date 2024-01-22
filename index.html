@@ -7,6 +7,7 @@
     <title>Tienda AJAX</title>
     <link rel="stylesheet" href="client/styles/login.css">
     <link rel="stylesheet" href="client/styles/principal.css">
+    <link rel="stylesheet" href="client/styles/carrito.css">
 </head>
 
 <body>
@@ -56,7 +57,14 @@
                 <section></section>
             </article>
             <aside>
-                <button onclick="cerrarCarrito()">&times;</button>
+                <div>
+                    <button id="cerrar" onclick="cerrarCarrito()">&times;</button>
+                    <h1>Carrito</h1>
+                </div>
+                <section id="productosCarr"></section>
+                <div>
+                    <button>Realizar Pedido</button>
+                </div>
             </aside>
         </main>
     </div>

@@ -1,0 +1,51 @@
+aside {
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1;
+    top: 0; 
+    right: 0;
+    background-color: #fffffe; 
+    overflow-x: hidden;
+    transition: 0.5s; 
+}
+
+
+#cerrar {
+    border: none;
+    border-radius: 50%;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    background-color: white;
+    font-size: 30px;
+}
+
+aside div:first-of-type {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    border-bottom: dashed 1px gray;
+}
+
+aside div:last-of-type {
+    padding: 20px;
+    display: flex;
+    border-top: dashed 1px gray;
+}
+
+aside div:last-of-type button{
+    background-color: RGB(0, 123, 157);
+    color: #eceff1;
+    padding: 10px;
+    border: solid 3px RGB(0, 123, 157);
+    border-radius: 5px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+aside div:last-of-type button:hover {
+    color:RGB(0, 123, 157);
+    background-color: #eceff1;  
+}
+

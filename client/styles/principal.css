@@ -89,18 +89,6 @@ header{
 }
 
 
-aside {
-    height: 100%; 
-    width: 0; 
-    position: fixed; 
-    z-index: 1;
-    top: 0; 
-    right: 0;
-    background-color: #fffffe; 
-    overflow-x: hidden;
-    transition: 0.5s; 
-}
-
 #titulo {
     font-size: 40px;
     margin-top: 30px;
@@ -164,7 +152,7 @@ article #productos {
     height: 110px;
 }
 
-.producto div{
+.producto .btns{
     display: flex;
     flex-direction: column;
     align-items: start;

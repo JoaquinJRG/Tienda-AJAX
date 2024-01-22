@@ -52,18 +52,19 @@ function cargarProductos(idCategoria, nombreCategoria) {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+
             let productos = JSON.parse(this.responseText);
             productos.forEach(prod => {
                 let div = document.createElement("div");
                 let divDatos = document.createElement("div");
-                let divBtn = document.createElement("div");
+                let form = document.createElement("form");
                 let addBtn = document.createElement("button");
                 let input = document.createElement("input");
                 let imagen = document.createElement("img"); 
 
                 div.classList.add("producto");
                 divDatos.classList.add("datos");
-                divBtn.classList.add("btns")
+                form.classList.add("btns")
                 imagen.src = "client/" + prod.imagen;
 
                 divDatos.innerHTML = `
@@ -74,16 +75,24 @@ function cargarProductos(idCategoria, nombreCategoria) {
 
                 addBtn.innerHTML = "Añadir al carrito";
                 input.type = "number";
+                input.id = prod.id; 
+                input.min = "1"; 
+                input.value = "1";
                 input.classList.add("cantidad");
 
-                divBtn.appendChild(addBtn);
-                divBtn.appendChild(input);
+                form.appendChild(addBtn);
+                form.appendChild(input);
                 div.appendChild(imagen);
                 div.appendChild(divDatos)
-                div.appendChild(divBtn);
+                div.appendChild(form);
 
                 seccion.appendChild(div);
-                addBtn.onclick = function() {addCarrito(prod.idProducto)}
+
+                
+                form.onsubmit = function() {
+                    addCarrito(prod.idProducto, Number( input.value) )
+                }
+                
             });
         }
     };
@@ -97,6 +106,11 @@ function cargarProductos(idCategoria, nombreCategoria) {
 }
 
 
-function addCarrito(idProducto) {
-    console.log(idProducto);
+function anadirProductos(idProducto, unidades) {
+    
+    
+}
+
+function eliminarProductos(idProducto, unidades) {
+
 }
