@@ -53,6 +53,11 @@ function cargarProductos(idCategoria, nombreCategoria) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
+            if (this.responseText == "false[]") {
+                seccion.innerHTML = "No hay productos de esta categoría."; 
+                return; 
+            }
+
             let productos = JSON.parse(this.responseText);
             productos.forEach(prod => {
                 let div = document.createElement("div");
@@ -80,8 +85,10 @@ function cargarProductos(idCategoria, nombreCategoria) {
 
                 input.type = "number";
                 input.id = prod.idProducto; 
+                //Rango de valores input
                 input.min = "1"; 
                 input.value = "1";
+                input.max = prod.stock; 
                 input.classList.add("cantidad");
 
                 form.appendChild(addBtn);

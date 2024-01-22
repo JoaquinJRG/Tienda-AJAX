@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Consulta vacia
     if($resultado->rowCount() == 0 || !$resultado){
-        echo "error"; 
+        echo "false"; 
     }
 
     echo json_encode(iterator_to_array($resultado)); 

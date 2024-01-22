@@ -1,4 +1,5 @@
 const aside = document.querySelector("aside");
+const productosSection = document.querySelector("#productosCarrito");
 
 //Abre la sección del carrito y carga los productos
 function abrirCarrito() {
@@ -48,11 +49,18 @@ function eliminarProductos(idProducto, unidades) {
 
 //Muestra los productos
 function cargarCarrito() {
+
+    productosSection.innerHTML = ""; 
+
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            let productos = JSON.parse(this.responseText);
+
+            productos.forEach(prod => {
+                console.log(prod);
+            });
         }
     };
 
