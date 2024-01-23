@@ -23,6 +23,7 @@ if(!$resultado || $resultado->rowCount() == 0){
     echo "error"; 
 }
 
+$precioTotal = 0; 
 $arrayDatos = [];
 
 foreach ($resultado as $value) {
@@ -33,6 +34,7 @@ foreach ($resultado as $value) {
         "imagen" => $value["imagen"],
         "unidades" => $_SESSION["carrito"][$value["idProducto"]]
     ];
+    $precioTotal += floatval( $value["precio"] ) * $_SESSION["carrito"][$value["idProducto"]];
 }
 
-echo json_encode( $arrayDatos );
+echo json_encode( [$arrayDatos,  $precioTotal] );

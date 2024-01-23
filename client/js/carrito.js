@@ -1,17 +1,18 @@
 const aside = document.querySelector("aside");
 const productosSection = document.getElementById("productosCarrito");
-const realizarPedido = document.getElementById("realizar-pedido");
+const pedirDiv = document.getElementById("pedir");
+let precio = document.createElement("p")
 
 //Abre la sección del carrito y carga los productos
 function abrirCarrito() {
-    aside.style.width = "500px";    
+    aside.style.display = "block";  
     cargarCarrito();
 }
 
 //Cierra el carrito
-function cerrarCarrito() {
+function cerrarCarrito() { 
+    aside.style.display = "none";
     productosSection.innerHTML = ""; 
-    aside.style.width = "0";
 }
 
 //Añade los productos indicados al carrito
@@ -51,27 +52,33 @@ function eliminarProductos(idProducto, unidades) {
 
 //Muestra los productos
 function cargarCarrito() {
-
+    precio.innerHTML = ""; 
     productosSection.innerHTML = ""; 
 
     let xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            
+    xhttp.onreadystatechange = function () { 
+
+        if (this.readyState == 4 && this.status == 200) {  
             if (this.responseText == "error") {
                 productosSection.innerHTML = "Carrito vacío."; 
+                pedirDiv.style.display = "none"; 
                 return; 
             }
             
-            realizarPedido.style.display = "block";
+            pedirDiv.style.display = "flex"; 
 
             let productos = JSON.parse(this.responseText);
-            productos.forEach(prod => {
+            productos[0].forEach(prod => {
                 let div = document.createElement("div");
                 let img = document.createElement("img"); 
                 let datosCarrito = document.createElement("div")
+                let btnEliminar = document.createElement("button");
 
+                btnEliminar.innerHTML = "Eliminar"; 
+                btnEliminar.onclick = function() {
+                    eliminarProductos(prod.idProducto, 1);
+                };
                 div.classList.add("productoCarrito");
                 img.src = "client/" + prod.imagen;
                 datosCarrito.innerHTML = `
@@ -82,10 +89,17 @@ function cargarCarrito() {
 
                 div.appendChild(img);
                 div.appendChild(datosCarrito);
+                div.appendChild(btnEliminar);
 
                 productosSection.appendChild(div);
             });
+
+            //Precio total de los productos
+            precio.innerHTML = "Precio total: " +  productos[1] + "€";
+            pedirDiv.appendChild(precio);
+
         }
+
     };
 
     xhttp.open("GET", "server/carrito_json.php", true);
@@ -93,3 +107,5 @@ function cargarCarrito() {
     return false;
 
 }
+
+
