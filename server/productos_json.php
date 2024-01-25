@@ -3,6 +3,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $idCategoria = $_POST["idCategoria"];
+    $order = $_POST["order"]; 
 
     require_once "sesiones.php";
     require_once "conexion_bd.php";
@@ -12,7 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bd = conectarBD();
 
     $sql = "SELECT idProducto, nombre, precio, imagen, stock FROM producto 
-    WHERE idCategoria = $idCategoria AND stock > 0;"; 
+    WHERE idCategoria = $idCategoria AND stock > 0 
+    ORDER BY precio $order;"; 
 
     $resultado = $bd->query($sql);
 

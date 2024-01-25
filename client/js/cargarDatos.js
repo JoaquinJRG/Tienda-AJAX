@@ -42,7 +42,7 @@ function cargarCategorias() {
 }
 
 //Obtiene los datos de los productos de una categoría determinada y los representa.
-function cargarProductos(idCategoria, nombreCategoria) {
+function cargarProductos(idCategoria, nombreCategoria, order = "DESC") {
 
     seccion.innerHTML = "";
     seccion.id = "productos";
@@ -106,7 +106,7 @@ function cargarProductos(idCategoria, nombreCategoria) {
 
     xhttp.open("POST", "server/productos_json.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(`idCategoria=${idCategoria}`);
+    xhttp.send(`idCategoria=${idCategoria}&order=${order}`);
 
     return false;
 
