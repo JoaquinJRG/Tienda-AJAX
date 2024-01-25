@@ -4,6 +4,7 @@ const loginForm = document.querySelector("#login form");
 const crearCuentaDiv = document.getElementById("crear-cuenta");
 const crearCuentaForm = document.querySelector("#crear-cuenta form");
 const principalDiv = document.getElementById("principal");
+const adminDiv = document.getElementById("admin");
 
 //Funciones
 // Oculta el login y muestra el formulario para crear cuenta
@@ -77,8 +78,11 @@ function iniciarSesion(event) {
                 principalDiv.style.display = "flex";
 
                 cargarCategorias();
+            }
 
-            } 
+            if (this.responseText == "admin") {
+                mostrarAdmin(); 
+            }
 
         }
     };
@@ -90,6 +94,12 @@ function iniciarSesion(event) {
     return false;
 }
 
+// Oculta el formulario de login y muestra la sección de admin
+function mostrarAdmin() {
+    loginDiv.style.display = "none"; 
+    adminDiv.style.display = "flex";    
+}
+
 //Cierra sesión. Oculta la sección principal y muestra el login
 function cerrarSesion() {
     let xhttp = new XMLHttpRequest(); 
@@ -97,7 +107,9 @@ function cerrarSesion() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             loginDiv.style.display = "flex"; 
-            principalDiv.style.display = "none";    
+            principalDiv.style.display = "none";
+            adminDiv.style.display = "none";     
+             
             alert("Sesion cerrada con éxito");	
         }
     };  
@@ -107,5 +119,6 @@ function cerrarSesion() {
 
     return false; 
 }
+
 
 

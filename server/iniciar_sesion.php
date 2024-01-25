@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bd = conectarBD();
 
     try {
-        $sql = "SELECT idUsuario, nombre, correo FROM usuario 
+        $sql = "SELECT idUsuario, nombre, correo, esAdmin FROM usuario 
                 WHERE nombre='$nombreUsuario' AND clave = '$claveUsuario';";
 
         $resultado = $bd->query($sql);
@@ -35,7 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $_SESSION["carrito"] = [];
 
-            echo "true";
+            //Comprobamos si es admin 
+
+            if ($consulta["esAdmin"] == 1) {
+                echo "admin";
+            } else {
+                echo "true";
+            }
+
         }
     } catch (PDOException $e) {
         echo "error";

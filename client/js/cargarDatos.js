@@ -80,7 +80,7 @@ function cargarProductos(idCategoria, nombreCategoria, order = "DESC") {
  
                 addBtn.innerHTML = "Añadir al carrito";
                 addBtn.onclick = function() {
-                    anadirProductos(prod.idProducto, Number( input.value) )
+                    anadirProductos(prod.idProducto, Number( input.value) ); 
                 };
 
                 input.type = "number";

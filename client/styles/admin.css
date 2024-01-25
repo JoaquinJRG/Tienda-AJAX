@@ -1,0 +1,17 @@
+#admin {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#admin header {
+    background-color: rgb(32, 32, 38);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    padding: 5px 10%;
+}
+
