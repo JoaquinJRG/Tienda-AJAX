@@ -58,6 +58,8 @@ function cargarProductos(idCategoria, nombreCategoria, order = "DESC") {
                 return; 
             }
 
+            crearSeccionOrdenar(idCategoria, nombreCategoria);
+
             let productos = JSON.parse(this.responseText);
             productos.forEach(prod => {
                 let div = document.createElement("div");
@@ -80,7 +82,7 @@ function cargarProductos(idCategoria, nombreCategoria, order = "DESC") {
  
                 addBtn.innerHTML = "Añadir al carrito";
                 addBtn.onclick = function() {
-                    anadirProductos(prod.idProducto, Number( input.value) ); 
+                    anadirProductos(prod.idProducto, Number( input.value ) ); 
                 };
 
                 input.type = "number";
@@ -109,5 +111,24 @@ function cargarProductos(idCategoria, nombreCategoria, order = "DESC") {
     xhttp.send(`idCategoria=${idCategoria}&order=${order}`);
 
     return false;
+
+}
+
+function crearSeccionOrdenar(idCategoria, nombreCategoria) {
+    
+    seccion.innerHTML = `
+    <div>
+        <select>
+            <option value="DESC">Más caro a más barato</option>
+            <option value="ASC">Más barato a más caro</option>
+        </select>
+        <button id="ordenar">Ordenar</button>
+    </div>
+    `;
+
+    document.querySelector("#ordenar").addEventListener("click", () => {
+        let selectValue = document.querySelector("select").value;
+        cargarProductos(idCategoria, nombreCategoria, selectValue);
+    })
 
 }
