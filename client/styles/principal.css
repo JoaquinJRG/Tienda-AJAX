@@ -176,7 +176,6 @@ article #productos {
     background-color: #eceff1;
 }
 
-
 .btns input {
     width: 65px;
     height: auto;
@@ -188,4 +187,21 @@ article #productos {
     transition: all 0.3s ease 0s;
 }
 
+#ordenar {
+    background-color: RGB(0, 123, 157);
+    color: #eceff1;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 3px RGB(0, 123, 157);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
 
+#ordenar:hover {
+    color:RGB(0, 123, 157);
+    background-color: #eceff1; 
+}
+
+select {
+    padding: 5px;
+}
