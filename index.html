@@ -70,29 +70,42 @@
         </main>
     </div>
 
-        <!--Sección administrador-->
-        <div id="admin" style="display: none;">
-            <header>
-                <button id="enlace-inicio" onclick="">Inicio</button>
-                <div class="datos">
-                </div>
-                <div class="enlaces">
-                    <button onclick="cerrarSesion()" id="cerrar-sesion-btn">Cerrar sesión</button>
-                </div>
-            </header>
-            <main> 
-                <article>
-                    <h1 id="titulo">Titulo</h1>
-                    <section>
-                        Admin
-                    </section>
-                </article>
-            </main>
-        </div>
+    <!--Sección administrador-->
+    <div id="admin" style="display: none;">
+        <header>
+            <button id="enlace-inicio" onclick="mostrarInicio()">Inicio</button>
+            <div class="datos">
+            </div>
+            <div class="enlaces">
+                <button onclick="cerrarSesion()" id="cerrar-sesion-btn">Cerrar sesión</button>
+            </div>
+        </header>
+        <main> 
+            <article>
+                <h1 id="titulo">Administrar</h1>
+                <!--Crear esto con DOM ??-->
+                <section id="inicio">
+                    <div id="anadir-productos" onclick="mostrarAnadirProductos()">
+                        <p>Añadir productos</p>
+                    </div>
+                    <div id="anadir-categorias" onclick="mostrarAnadirCategorias()">
+                        <p>Añadir categoría</p>
+                    </div>
+                    <div id="eliminar-productos" onclick="mostrarEliminarProductos()">
+                        <p>Eliminar productos</p>
+                    </div>
+                </section>
+                <section id="administar" style="display: none;">
+                    
+                </section>
+            </article>
+        </main>
+    </div>
 
     <script src="client/js/sesion.js"></script>
     <script src="client/js/cargarDatos.js"></script>
     <script src="client/js/carrito.js"></script>
+    <script src="client/js/admin.js"></script>
 
 </body>
 
