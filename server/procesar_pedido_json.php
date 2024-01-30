@@ -28,13 +28,16 @@ if ($resul == false) {
         echo "error"; 
     }
 
-    //SIN TERMINAR
+    $productos = iterator_to_array($resultado);
+    foreach ($productos as &$producto) {
+        $cod = $producto['idProducto'];
+        $producto['unidades'] = $_SESSION['carrito'][$cod];	
+    }
 
+    echo json_encode($productos);
     //Vaciar el carrito
     $_SESSION['carrito'] = [];
 }
-
-
 
 function realizarPedido($carrito, $idUsuario) {
     $bd = conectarBD();

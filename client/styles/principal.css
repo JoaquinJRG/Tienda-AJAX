@@ -1,5 +1,5 @@
 /*Estilos del header*/
-header{
+header {
     background-color: rgb(32, 32, 38);
     display: flex;
     justify-content: space-between;
@@ -10,19 +10,19 @@ header{
 }
 
 /*Div con los datos*/
-.datos{
+.datos {
     display: flex;
     flex-direction: column;
 }
 
-.datos span{
+.datos span {
     color: #eceff1;
 }
 
 
 
 /*Div con los enlaces*/
-.enlaces{
+.enlaces {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ header{
 }
 
 /*Botón carrito*/
-#carrito{
+#carrito {
     background-color: RGB(32, 32, 38);
     padding: 9px 25px;
     border: solid 1px transparent;
@@ -39,12 +39,12 @@ header{
     transition: all 0.3s ease 0s;
 }
 
-#carrito:hover{
+#carrito:hover {
     background-color: rgb(57, 57, 60);
 }
 
 /*Botón cerrar sesión*/
-#cerrar-sesion-btn{
+#cerrar-sesion-btn {
     font-weight: 700;
     color: #eceff1;
     padding: 9px 25px;
@@ -56,14 +56,14 @@ header{
     text-decoration: none;
 }
 
-#cerrar-sesion-btn:hover{
+#cerrar-sesion-btn:hover {
     color: RGB(0, 123, 157);
     border: 3px solid RGB(0, 123, 157);
     background-color: #eceff1;
 }
 
 /*Enlace Inicio*/
-#enlace-inicio{
+#enlace-inicio {
     font-weight: 700;
     color: #eceff1;
     padding: 9px 25px;
@@ -75,7 +75,7 @@ header{
     text-decoration: none;
 }
 
-#enlace-inicio:hover{
+#enlace-inicio:hover {
     color: RGB(0, 123, 157);
     border: 3px solid RGB(0, 123, 157);
     background-color: #eceff1;
@@ -106,7 +106,7 @@ article #categorias {
     height: 100%;
 }
 
-.categoria{
+.categoria {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,7 +120,7 @@ article #categorias {
     cursor: pointer;
 }
 
-.categoria img{
+.categoria img {
     background-color: black;
     width: 200px;
     height: auto;
@@ -134,7 +134,7 @@ article #productos {
     gap: 20px;
 }
 
-.producto{
+.producto {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -146,13 +146,13 @@ article #productos {
     background-color: white;
 }
 
-.producto img{
+.producto img {
     background-color: black;
     width: auto;
     height: 110px;
 }
 
-.producto .btns{
+.producto .btns {
     display: flex;
     flex-direction: row;
     align-items: start;
@@ -172,7 +172,7 @@ article #productos {
 
 
 .btns button:hover {
-    color:RGB(0, 123, 157);
+    color: RGB(0, 123, 157);
     background-color: #eceff1;
 }
 
@@ -198,10 +198,19 @@ article #productos {
 }
 
 #ordenar:hover {
-    color:RGB(0, 123, 157);
-    background-color: #eceff1; 
+    color: RGB(0, 123, 157);
+    background-color: #eceff1;
 }
 
 select {
     padding: 5px;
+}
+
+#divProdPedido {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 500px;
+    border: solid;
 }

@@ -1,6 +1,5 @@
-const titulo = document.getElementById("titulo");
+const tituloAdmin = document.getElementById("titulo");
 const inicioSection = document.getElementById("inicio");
-const adminSection = document.getElementById()
 
 function mostrarInicio() {
     inicioSection.style.display = "flex";

@@ -1,18 +1,21 @@
 const aside = document.querySelector("aside");
 const productosSection = document.getElementById("productosCarrito");
 const pedirDiv = document.getElementById("pedir");
-let precio = document.createElement("p")
+const realizarPedidoBtn = document.getElementById("realizar-pedido");
+let precio = document.createElement("p"); 
+
+let precioTotal; 
 
 //Abre la sección del carrito y carga los productos
 function abrirCarrito() {
-    aside.style.display = "block";  
+    aside.style.display = "block";
     cargarCarrito();
 }
 
 //Cierra el carrito
-function cerrarCarrito() { 
+function cerrarCarrito() {
     aside.style.display = "none";
-    productosSection.innerHTML = ""; 
+    productosSection.innerHTML = "";
 }
 
 //Añade los productos indicados al carrito
@@ -52,31 +55,31 @@ function eliminarProductos(idProducto, unidades) {
 
 //Muestra los productos
 function cargarCarrito() {
-    precio.innerHTML = ""; 
-    productosSection.innerHTML = ""; 
+    precio.innerHTML = "";
+    productosSection.innerHTML = "";
 
     let xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function () { 
+    xhttp.onreadystatechange = function () {
 
-        if (this.readyState == 4 && this.status == 200) {  
+        if (this.readyState == 4 && this.status == 200) {
             if (this.responseText == "error") {
-                productosSection.innerHTML = "Carrito vacío."; 
-                pedirDiv.style.display = "none"; 
-                return; 
+                productosSection.innerHTML = "Carrito vacío.";
+                pedirDiv.style.display = "none";
+                return;
             }
-            
-            pedirDiv.style.display = "flex"; 
+
+            pedirDiv.style.display = "flex";
 
             let productos = JSON.parse(this.responseText);
             productos[0].forEach(prod => {
                 let div = document.createElement("div");
-                let img = document.createElement("img"); 
+                let img = document.createElement("img");
                 let datosCarrito = document.createElement("div")
                 let btnEliminar = document.createElement("button");
 
-                btnEliminar.innerHTML = "Eliminar"; 
-                btnEliminar.onclick = function() {
+                btnEliminar.innerHTML = "Eliminar";
+                btnEliminar.onclick = function () {
                     eliminarProductos(prod.idProducto, 1);
                 };
                 div.classList.add("productoCarrito");
@@ -95,9 +98,10 @@ function cargarCarrito() {
             });
 
             //Precio total de los productos
-            precio.innerHTML = "Precio total: " +  productos[1] + "€";
+            precio.innerHTML = "Precio total: " + productos[1] + "€";
             pedirDiv.appendChild(precio);
 
+            precioTotal = productos[1]; 
         }
 
     };
@@ -110,18 +114,48 @@ function cargarCarrito() {
 
 
 function procesarPedido() {
-    
-    cerrarCarrito(); 
-    let xhttp = new XMLHttpRequest(); 
+
+    cerrarCarrito();
+    titulo.innerHTML = "Pedido";
+    seccion.innerHTML = "";
+
+    let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+
+            if (this.responseText == "error") {
+                seccion.innerHTML = "Error al realizar el pedido.";
+                return;
+            }
+
+            let productosPedido = JSON.parse( this.responseText );
+
+            productosPedido.forEach((producto) => {
+                let div = document.createElement("div");
+                let datos = document.createElement("div")
+
+                div.id = "divProdPedido";
+                datos.innerHTML = `
+                    <h5>${producto.nombre}</h5>
+                    <h6>${producto.precio} €</h6>
+                    <h6>Unidades: ${producto.unidades}</h6>
+                `;
+
+                div.appendChild(datos);
+
+                seccion.append(div);
+            });
+
+            let parrPrecio = document.createElement("p");
+            parrPrecio.innerHTML = "Precio total: " + precioTotal + " €"; 
+            seccion.appendChild(parrPrecio); 
         }
 
-    }; 
+    };
 
-    xhttp.open("GET", "procesar_pedido_json.php", true); 
-    xhttp.send(); 
-    return false; 
+    xhttp.open("GET", "server/procesar_pedido_json.php", true);
+    xhttp.send();
+    return false;
 
 }
