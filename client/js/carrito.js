@@ -112,7 +112,7 @@ function cargarCarrito() {
 
 }
 
-
+//Se realiza el pedido con los productos del carrito y se muestran
 function procesarPedido() {
 
     cerrarCarrito();

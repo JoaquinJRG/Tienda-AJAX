@@ -114,6 +114,8 @@ function cargarProductos(idCategoria, nombreCategoria, order = "DESC") {
 
 }
 
+//Crea el div con el select para ordenar los productos
+//El boton ordenar llama a la función cargar productos con el valor del input
 function crearSeccionOrdenar(idCategoria, nombreCategoria) {
     
     seccion.innerHTML = `
