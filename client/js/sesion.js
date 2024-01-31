@@ -6,6 +6,8 @@ const crearCuentaForm = document.querySelector("#crear-cuenta form");
 const principalDiv = document.getElementById("principal");
 const adminDiv = document.getElementById("admin");
 
+let usuarioDato = document.getElementById("usuario-dato");
+
 //Funciones
 // Oculta el login y muestra el formulario para crear cuenta
 function mostrarCrearCuenta() {
@@ -76,7 +78,7 @@ function iniciarSesion(event) {
             if (this.responseText == "true") {
                 loginDiv.style.display = "none"; 
                 principalDiv.style.display = "flex";
-
+                usuarioDato.innerHTML = "<b>Nombre usuario:</b> " + nombreUsuario.value;
                 cargarCategorias();
             }
 
