@@ -85,7 +85,6 @@
         <main> 
             <article>
                 <h1 id="titulo">Administrar</h1>
-                <!--Crear esto con DOM ??-->
                 <section id="inicio">
                     <div onclick="mostrarAnadirProductos()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -115,12 +114,43 @@
                         <p>Eliminar productos</p>
                     </div>
                 </section>
+                <!-- Añadir productos -->
                 <section id="anadir-productos" style="display: none;">
-                    
-                </section>
-                <section id="anadir-categorias" style="display: none;">
+                    <form>
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria">
 
+                        </select>
+                        <input type="text" id="nombreProd" placeholder="Nombre" required>
+                        <input type="text" id="precioProd" placeholder="Precio" required>
+                        <div>
+                            <label for="stock">Stock:</label>
+                            <input type="number" id="stock" min="0" value="1" required>
+                        </div>
+                        <textarea id="descripcionProd" cols="20" rows="5" placeholder="Descripción" required></textarea>
+                        <div>
+                            <label for="imagenProd">Imagen:</label>
+                            <input type="file" id="imagenProd" required/>
+                        </div>
+
+                        <input type="submit" value="Añadir">
+                    </form>
                 </section>
+
+                <!-- Añadir categorías -->
+                <section id="anadir-categorias" style="display: none;">
+                    <form>
+                        <input type="text" id="nombreCat" placeholder="Nombre" required> 
+                        <div>
+                            <label for="imagenCat">Imagen:</label>
+                            <input type="file" name="imagenCat" required/>
+                        </div>
+            
+                        <input type="submit" value="Añadir">
+                    </form>
+                </section>
+
+                <!-- Eliminar productos -->
                 <section id="eliminar-productos" style="display: none;">
                     
                 </section>
