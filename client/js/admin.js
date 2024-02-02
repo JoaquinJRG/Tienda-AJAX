@@ -72,8 +72,31 @@ function anadirProducto(e) {
     xhttp.send(formData);
 }
 
-function anadirCategoria() {
+function anadirCategoria(e) {
+    e.preventDefault();
+    let nombreCat = document.getElementById("nombreCat").value;
+    let imagenCat = document.getElementById("imagenCat").files[0];
 
+    let xhttp = new XMLHttpRequest(); 
+
+    let formData = new FormData();
+
+    formData.append("img", imagenCat);
+    formData.append("nombre", nombreCat);
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText == "true") {
+                alert("Categoría añadida correctamente");
+            } else {
+                alert("Error al añadir la acategoría"); 
+            }
+        }
+    };
+
+    xhttp.open("POST", "server/anadir_categoria.php", true);
+    xhttp.send(formData);
+    
 }
 
 function eliminarProducto() {
