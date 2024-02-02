@@ -173,6 +173,24 @@ function cargarCategoriasOption() {
 }
 
 
-function eliminarProducto() {
-    
+function eliminarProducto(idProducto) {
+    let xhttp = new XMLHttpRequest(); 
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            if (this.responseText == "true") {
+                alert("Producto eliminado");
+            } else {
+                alert("Error al eliminar"); 
+            }
+
+            mostrarEliminarProductos(); 
+        }
+    };
+
+    xhttp.open("POST", "server/eliminar_producto.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(`idProducto=${idProducto}`);
 }
+
