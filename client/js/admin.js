@@ -15,7 +15,7 @@ function mostrarInicio() {
     eliminarProductosAdmin.style.display = "none";
 }
 
-//
+
 function mostrarAnadirProductos() {
     tituloAdmin.innerHTML = "Añadir Productos";
     inicioSection.style.display = "none";
@@ -23,7 +23,7 @@ function mostrarAnadirProductos() {
     cargarCategoriasOption();
 }
 
-//
+
 function mostrarAnadirCategorias() {
     tituloAdmin.innerHTML = "Añadir Categorías";
     inicioSection.style.display = "none";
@@ -36,6 +36,54 @@ function mostrarEliminarProductos() {
     tituloAdmin.innerHTML = "Eliminar Productos";
     inicioSection.style.display = "none";
     eliminarProductosAdmin.style.display = "flex";
+    eliminarProductosAdmin.innerHTML = ""; 
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            if ( this.responseText == "false") {
+                eliminarProductosAdmin.innerHTML = "No hay productos"; 
+                return; 
+            }
+
+            let productos = JSON.parse(this.responseText);
+
+            productos.forEach(prod => {
+                let div = document.createElement("div");
+                let divDatos = document.createElement("div");
+                let addBtn = document.createElement("button");
+                let imagen = document.createElement("img"); 
+
+                div.classList.add("producto");
+                divDatos.classList.add("datos");
+                div.id = prod.idProducto; 
+                imagen.src = "client/" + prod.imagen;
+
+                divDatos.innerHTML = `
+                    <h3>${prod.nombre}</h3>
+                    <h4>${prod.precio} €</h4>
+                    <p>Stock: ${prod.stock}</p>
+                `;
+ 
+                addBtn.innerHTML = "Eliminar";
+                addBtn.onclick = function() {
+                    eliminarProducto(prod.idProducto);  
+                };
+
+               
+                div.appendChild(imagen);
+                div.appendChild(divDatos)
+                div.appendChild(addBtn);
+
+                eliminarProductosAdmin.appendChild(div);
+                
+            });
+        }
+    }; 
+
+    xhttp.open("GET", "server/productos_todos.php", true);
+    xhttp.send();  
 }
 
 
@@ -72,6 +120,7 @@ function anadirProducto(e) {
     xhttp.send(formData);
 }
 
+
 function anadirCategoria(e) {
     e.preventDefault();
     let nombreCat = document.getElementById("nombreCat").value;
@@ -99,11 +148,6 @@ function anadirCategoria(e) {
     
 }
 
-function eliminarProducto() {
-
-}
-
-
 //Crea los <option> con las categorías
 function cargarCategoriasOption() {
 
@@ -126,4 +170,9 @@ function cargarCategoriasOption() {
 
     xhttp.open("GET", "server/categorias_json.php", true);
     xhttp.send();
+}
+
+
+function eliminarProducto() {
+    
 }
