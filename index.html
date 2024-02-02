@@ -118,14 +118,14 @@
                 <section id="anadir-productos" style="display: none;">
                     <form>
                         <label for="categoria">Categoría:</label>
-                        <select id="categoria">
+                        <select id="select-categoria">
 
                         </select>
                         <input type="text" id="nombreProd" placeholder="Nombre" required>
                         <input type="text" id="precioProd" placeholder="Precio" required>
                         <div>
                             <label for="stock">Stock:</label>
-                            <input type="number" id="stock" min="0" value="1" required>
+                            <input type="number" id="stockProd" min="0" value="1" required>
                         </div>
                         <textarea id="descripcionProd" cols="20" rows="5" placeholder="Descripción" required></textarea>
                         <div>
@@ -133,7 +133,7 @@
                             <input type="file" id="imagenProd" required/>
                         </div>
 
-                        <input type="submit" value="Añadir">
+                        <input type="submit" value="Añadir" onclick="anadirProducto(event)">
                     </form>
                 </section>
 

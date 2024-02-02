@@ -78,7 +78,7 @@ function iniciarSesion(event) {
             if (this.responseText == "true") {
                 loginDiv.style.display = "none"; 
                 principalDiv.style.display = "flex";
-                usuarioDato.innerHTML = "<b>Nombre usuario:</b> " + nombreUsuario.value;
+                usuarioDato.innerHTML = "<b>Usuario:</b> " + nombreUsuario.value;
                 cargarCategorias();
             }
 
