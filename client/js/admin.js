@@ -98,6 +98,11 @@ function anadirProducto(e) {
     let descripcionProd = document.getElementById("descripcionProd").value;
     let imagenProd = document.getElementById("imagenProd").files[0]; 
 
+    if (nombreProd == "" || precioProd == "" || stockProd == "" || descripcionProd == "" || imagenProd == "") {
+        alert("Introduce todos los datos"); 
+        return; 
+    }
+
     let formData = new FormData();
     formData.append("img", imagenProd);
     formData.append("nombre", nombreProd);
@@ -125,6 +130,11 @@ function anadirCategoria(e) {
     e.preventDefault();
     let nombreCat = document.getElementById("nombreCat").value;
     let imagenCat = document.getElementById("imagenCat").files[0];
+
+    if (nombreCat == "" || imagenCat == "") {
+        alert("Introduce todos los datos"); 
+        return; 
+    }
 
     let xhttp = new XMLHttpRequest(); 
 
